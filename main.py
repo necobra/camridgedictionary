@@ -17,6 +17,8 @@ dp = Dispatcher(bot, storage=storage)
 async def process_words(message: types.Message):
     words_list = message.text.split('\n')
     # print(words_list)
+    if words_list[0].isdigit():
+        words_list = words_list[1:]
     if words_list[-1] == '1':
         msg = await translate(words_list)
     else:
